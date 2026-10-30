@@ -9,6 +9,7 @@
     "web"
   ],
   "scripts": {
+    "prepare": "git config core.hooksPath .githooks || true",
     "test": "vitest run",
     "typecheck": "tsc -p core && tsc -p cli && tsc -p web",
     "schema": "node core/scripts/schema.ts",

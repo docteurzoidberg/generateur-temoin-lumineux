@@ -319,9 +319,11 @@ touches haut et bas restent) : elles cachaient « 10.5 ».
 
 ## Points ouverts
 
-- [x] Tests de la page (`page.test.ts`, Chromium headless) : en local
-      seulement (31/10/2026) ; l'action GitHub fait le typecheck et les
-      autres tests. Sur son runner, le test hors ligne échouait : après le
+- [x] Tests en local seulement (31/10/2026) : le hook `.githooks/pre-push`
+      (activé par `npm install`) lance typecheck et `npm test` avant chaque
+      push et le bloque en cas d'échec ; l'action GitHub ne fait que le
+      typecheck, le build et la publication. Sur son runner, le test hors
+      ligne de la page échouait : après le
       rechargement sans réseau, la vue 3D n'était jamais construite, sans
       erreur dans la console (cause non trouvée ; il passe en local). Son
       message d'échec donne désormais l'état de la page et sa console.

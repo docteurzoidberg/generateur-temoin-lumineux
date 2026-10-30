@@ -1,7 +1,6 @@
-# Web page: checked, built and published on GitHub Pages on every push to main (Pages
-# source: "GitHub Actions" in the repository settings). Tests without a browser only: the
-# page tests (web/test/page.test.ts, headless Chromium) run locally. No deployment if a
-# check fails.
+# Web page: typechecked, built and published on GitHub Pages on every push to main (Pages
+# source: "GitHub Actions" in the repository settings). The tests run locally before every
+# push (.githooks/pre-push), the page tests in headless Chromium included.
 name: Page web
 
 on:
@@ -30,7 +29,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run typecheck
-      - run: npx vitest run --exclude web/test/page.test.ts
       - run: npm run build -w @temoin/web
       - uses: actions/upload-pages-artifact@v4
         with:

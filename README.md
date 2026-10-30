@@ -115,6 +115,10 @@ npm test
 npm run build -w @temoin/web                        # page construite dans web/dist
 ```
 
+`npm install` active aussi un hook git (`.githooks/pre-push`) : avant chaque
+push, il lance le typecheck et tous les tests, et bloque le push s'ils
+échouent. L'action GitHub, elle, ne fait que construire et publier la page.
+
 ### Ligne de commande
 
 ```bash

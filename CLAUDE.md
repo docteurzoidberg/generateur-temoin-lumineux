@@ -28,3 +28,7 @@ skill Claude Code, page web).
   l'utilisateur. Pas de types de filament : choisis au tranchage.
 - 3MF génériques (une pièce par couleur), faits ici ; le tranchage reste à
   l'utilisateur, dans le logiciel de son choix.
+- Tests en local : le hook `.githooks/pre-push` (activé par `npm install`)
+  lance typecheck et `npm test` avant chaque push, sur un arbre commité ;
+  l'action GitHub (`.github/workflows/page.yml`) ne fait que typecheck,
+  build et publication de la page sur GitHub Pages.
