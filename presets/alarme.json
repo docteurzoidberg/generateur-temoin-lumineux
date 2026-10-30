@@ -1,0 +1,26 @@
+{
+  "$schema": "schema.json",
+  "version": 1,
+  "legend": {
+    "text": "ALARME",
+    "background": "#111111"
+  },
+  "window": {
+    "width": 27,
+    "height": 10.5
+  },
+  "frame": {
+    "width": 47,
+    "height": 18,
+    "color": "#4b5320"
+  },
+  "panel": {
+    "thickness": 3
+  },
+  "mount": {
+    "head": "countersunk"
+  },
+  "light": {
+    "wireExit": "left"
+  }
+}

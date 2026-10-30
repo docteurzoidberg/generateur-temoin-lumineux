@@ -1,0 +1,77 @@
+{
+ "preset": "alarme",
+ "text": "ALARME",
+ "font": "Barlow Condensed SemiBold",
+ "fontFile": "BarlowCondensed-SemiBold.ttf",
+ "capHeight": 5.358,
+ "tracking": 0.12,
+ "width": 23.996,
+ "height": 5.358,
+ "ink": [
+  {
+   "area": 9.0163,
+   "cx": -10.355,
+   "cy": -0.282
+  },
+  {
+   "area": 6.113,
+   "cx": -6.816,
+   "cy": -0.512
+  },
+  {
+   "area": 9.0163,
+   "cx": -2.402,
+   "cy": -0.282
+  },
+  {
+   "area": 10.5616,
+   "cx": 1.708,
+   "cy": 0.112
+  },
+  {
+   "area": 11.9285,
+   "cx": 6.213,
+   "cy": 0.242
+  },
+  {
+   "area": 8.3313,
+   "cx": 10.311,
+   "cy": 0.0
+  }
+ ],
+ "islands": [
+  {
+   "area": 1.2112,
+   "cx": -10.371,
+   "cy": -0.198
+  },
+  {
+   "area": 1.2112,
+   "cx": -2.418,
+   "cy": -0.198
+  },
+  {
+   "area": 1.6023,
+   "cx": 1.795,
+   "cy": 1.113
+  }
+ ],
+ "checks": [
+  {
+   "level": "ok",
+   "msg": "marge entre le texte et le bord de la fenêtre : 1.50 mm"
+  },
+  {
+   "level": "ok",
+   "msg": "traits plus fins que la buse (0.4 mm) : aucun"
+  },
+  {
+   "level": "warn",
+   "msg": "espaces du masque plus fins que la buse : 0.02 mm² en x = 6.9, 0.02 mm² en x = 5.5, 0.05 mm² en x = -2.4, 0.05 mm² en x = -10.4"
+  },
+  {
+   "level": "ok",
+   "msg": "3 îlot(s) de masque, tenus par le voile (mode positif)"
+  }
+ ]
+}

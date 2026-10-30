@@ -1,0 +1,24 @@
+{
+  "name": "@temoin/core",
+  "version": "0.1.0",
+  "private": true,
+  "license": "WTFPL",
+  "type": "module",
+  "description": "Core of the indicator light generator: preset, parts, checks, exports, without I/O",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./occ-node": "./src/occ-node.ts"
+  },
+  "dependencies": {
+    "clipper-lib": "^6.4.2",
+    "fflate": "^0.8.3",
+    "opentype.js": "^2.0.0",
+    "replicad": "^1.2.0",
+    "replicad-opencascadejs": "^1.1.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/clipper-lib": "^6.4.0"
+  }
+}

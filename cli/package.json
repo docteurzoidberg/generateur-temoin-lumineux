@@ -1,0 +1,10 @@
+{
+  "name": "@temoin/cli",
+  "version": "0.1.0",
+  "private": true,
+  "license": "WTFPL",
+  "type": "module",
+  "description": "Command line of the indicator light generator",
+  "bin": { "temoin": "./bin/temoin.ts" },
+  "dependencies": { "@temoin/core": "0.1.0" }
+}

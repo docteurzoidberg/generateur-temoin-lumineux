@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Témoin lumineux</title>
+<script>
+  // Theme chosen with the button (main.ts), applied before the first paint.
+  try { const theme = localStorage.getItem('theme'); if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme; } catch {}
+</script>
+<meta name="description" content="Générateur de témoins lumineux encastrables imprimés en 3D : réglages, contrôles, aperçu et fichiers d'impression, dans le navigateur.">
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="intro">
+      <p class="eyebrow">Générateur · preset v1</p>
+      <h1>Témoin lumineux</h1>
+      <p class="lead">Une légende éclairée par l’arrière, dans un cadre vissé sur la découpe d’un panneau. Les réglages se contrôlent à chaque saisie ; les fichiers d’impression sont calculés dans le navigateur.</p>
+    </div>
+    <div class="presets">
+      <div class="actions">
+      <div class="tools" role="toolbar" aria-label="Preset">
+        <button type="button" class="tool" id="open" title="Ouvrir un preset .json (ou le glisser sur la page)">Ouvrir</button>
+        <details class="menu" id="examples">
+          <summary class="tool">Exemples</summary>
+          <div class="menu-list" id="example-list"></div>
+        </details>
+        <button type="button" class="tool" id="save" title="Enregistrer le preset (le .json de temoin generate)" disabled>Enregistrer</button>
+        <button type="button" class="tool" id="link" title="Copier le lien de la page, qui porte le preset">Lien</button>
+      </div>
+      <button type="button" class="tool theme" id="theme" aria-pressed="false" title="Thème sombre ou clair (par défaut, celui du système)">Sombre</button>
+      </div>
+      <p class="status" id="preset-status" role="status"></p>
+      <input type="file" id="file" accept=".json,application/json" hidden>
+    </div>
+  </header>
+
+  <div class="layout">
+    <div class="side">
+      <section class="panel" aria-labelledby="h-settings">
+        <h2 id="h-settings">Réglages</h2>
+        <form id="fields" autocomplete="off" onsubmit="return false">
+          <div class="row">
+            <label class="row-label" for="name">Nom des fichiers</label>
+            <div class="controls"><input id="name" type="text" spellcheck="false" aria-describedby="name-hint"></div>
+            <p class="field-hint" id="name-hint">Vide : tiré du texte.</p>
+          </div>
+        </form>
+      </section>
+      <section class="panel" aria-labelledby="h-mount">
+        <h2 id="h-mount">Montage</h2>
+        <dl class="summary" id="summary"></dl>
+      </section>
+    </div>
+
+    <div class="main">
+      <section class="panel" aria-labelledby="h-preview">
+        <div class="panel-head">
+          <h2 id="h-preview">Aperçu</h2>
+          <div class="seg" id="mode" role="group" aria-label="Vue">
+            <button type="button" data-mode="3d" aria-pressed="true">3D</button>
+            <button type="button" data-mode="face" aria-pressed="false">Face</button>
+          </div>
+        </div>
+        <div class="stage" id="stage" hidden>
+          <svg id="face" role="img" aria-label="Vue de face du témoin"></svg>
+        </div>
+        <div class="stage3d" id="stage3d">
+          <p class="hint">Glisser : tourner · molette : zoom · clic droit : déplacer</p>
+        </div>
+        <div class="light-row">
+          <span class="row-title">Lumière</span>
+          <div class="seg" id="light-state" role="group" aria-label="Lumière de la légende">
+            <button type="button" data-effect="off" aria-pressed="false">Éteinte</button>
+            <button type="button" data-effect="steady" aria-pressed="true">Fixe</button>
+            <button type="button" data-effect="breathe" aria-pressed="false">Respiration</button>
+            <button type="button" data-effect="blink" aria-pressed="false">Clignotement</button>
+          </div>
+          <div class="colors" id="light-colors" role="group" aria-label="Couleur de la lumière (simulation, hors preset)">
+            <button type="button" data-color="#ffffff" aria-pressed="true" title="Blanc" aria-label="Blanc" style="--c: #ffffff"></button>
+            <button type="button" data-color="#ffb000" aria-pressed="false" title="Ambre" aria-label="Ambre" style="--c: #ffb000"></button>
+            <button type="button" data-color="#ff2000" aria-pressed="false" title="Rouge" aria-label="Rouge" style="--c: #ff2000"></button>
+            <button type="button" data-color="#00e040" aria-pressed="false" title="Vert" aria-label="Vert" style="--c: #00e040"></button>
+            <button type="button" data-color="#2050ff" aria-pressed="false" title="Bleu" aria-label="Bleu" style="--c: #2050ff"></button>
+            <input type="color" id="light-color" value="#ffffff" aria-label="Autre couleur" title="Autre couleur">
+          </div>
+        </div>
+        <div class="controls3d" id="controls3d">
+          <div class="range-row">
+            <span>assemblé</span>
+            <input type="range" id="explode" min="0" max="100" value="100" aria-label="Écartement des pièces">
+            <span>éclaté</span>
+          </div>
+          <div class="seg" id="views" role="group" aria-label="Point de vue">
+            <button type="button" data-view="iso">Trois-quarts</button>
+            <button type="button" data-view="face">De face</button>
+            <button type="button" data-view="side">Profil</button>
+            <button type="button" data-view="back">Dos</button>
+          </div>
+          <div class="pieces" id="pieces" role="group" aria-label="Pièces affichées"></div>
+        </div>
+        <p class="caption" id="caption">Vue de face, à l’échelle.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="h-checks">
+        <h2 id="h-checks">Contrôles</h2>
+        <ul class="checks" id="checks" aria-live="polite"></ul>
+      </section>
+
+      <section class="panel" aria-labelledby="h-download">
+        <h2 id="h-download">Télécharger</h2>
+        <p class="muted">3MF à trancher, STL, STEP pour l’intégration et le preset : les fichiers de <code>temoin generate</code>, en un zip.</p>
+        <div class="download">
+          <button type="button" id="download" class="primary" disabled>Télécharger le zip</button>
+          <p class="status" id="status" role="status">Démarrage du moteur…</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="credits">
+    <p>Fonctionne hors ligne une fois chargée. Calcul des pièces : <a href="https://github.com/Open-Cascade-SAS/OCCT">Open CASCADE Technology</a> compilé en WebAssembly (<a href="https://github.com/sgenoud/replicad/tree/main/packages/replicad-opencascadejs">sources</a>), sous licence LGPL 2.1, dans un fichier à part. Polices Barlow Condensed et B612 sous SIL Open Font License 1.1. Bibliothèques et textes des licences : <a href="licences.txt">licences.txt</a>. Code du générateur sous <a href="https://www.wtfpl.net/">WTFPL</a>, sans garantie.</p>
+    <p>vibe codé avec le 🍑 par DrZoid</p>
+  </footer>
+</div>
+<div class="drop" id="drop" hidden><p>Déposer le preset (.json)</p></div>
+<script type="module" src="./src/main.ts"></script>
+</body>
+</html>

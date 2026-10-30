@@ -1,0 +1,5 @@
+node_modules/
+presets/export/
+web/dist/
+# Personal notes for Claude, not versioned
+CLAUDE.local.md

@@ -1,0 +1,23 @@
+{
+  "name": "generateur-temoin-lumineux",
+  "private": true,
+  "license": "WTFPL",
+  "type": "module",
+  "workspaces": [
+    "core",
+    "cli",
+    "web"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p core && tsc -p cli && tsc -p web",
+    "schema": "node core/scripts/schema.ts",
+    "temoin": "node cli/bin/temoin.ts",
+    "web": "npm run dev -w @temoin/web"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5"
+  }
+}

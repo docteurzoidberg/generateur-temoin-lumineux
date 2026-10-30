@@ -1,0 +1,16 @@
+export { presetSchema, parsePreset, presetJson, presetJsonSchema } from './preset.ts';
+export type { Preset, PresetInput, ParseResult } from './preset.ts';
+export { LEGEND, parseFont, layoutLegend, ringArea } from './legend.ts';
+export type { LegendLayout, InkPolygon, Ring, Point } from './legend.ts';
+export { dimensions, screwLength, M3, STRIP, SCREW_LENGTHS } from './dims.ts';
+export type { Dimensions } from './dims.ts';
+export { buildParts, frame, legend, legendPieces, box, cover, testPanel } from './parts.ts';
+export type { Parts } from './parts.ts';
+export { exportFiles, pieceInfo } from './exports.ts';
+export type { PieceInfo } from './exports.ts';
+export { previewParts } from './preview.ts';
+export type { PartMesh, PreviewCache, PreviewPart } from './preview.ts';
+export { checkPreset, generate, summaryLines } from './generate.ts';
+export type { Check, CheckResult, Summary } from './generate.ts';
+export { legendChecks, mountChecks, lightChecks } from './checks.ts';
+export { NOZZLE } from './dims.ts';

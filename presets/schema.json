@@ -1,0 +1,132 @@
+{
+  "title": "Preset de témoin lumineux, v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "Chemin ou URL du JSON Schema, pour les éditeurs",
+      "type": "string"
+    },
+    "version": {
+      "type": "number",
+      "const": 1
+    },
+    "legend": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "pattern": "\\S",
+          "description": "Texte de la légende, sur une ligne"
+        },
+        "background": {
+          "default": "#111111",
+          "description": "Couleur du fond de la légende (masque opaque) (#rrggbb) ; noir par défaut",
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "window": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "width": {
+          "default": 27,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Largeur de la fenêtre (partie visible de la légende) (mm)"
+        },
+        "height": {
+          "default": 10.5,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Hauteur de la fenêtre (mm)"
+        }
+      },
+      "additionalProperties": false
+    },
+    "frame": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "width": {
+          "default": 47,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Largeur du cadre (mm)"
+        },
+        "height": {
+          "default": 18,
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Hauteur du cadre (mm)"
+        },
+        "color": {
+          "default": "#111111",
+          "description": "Couleur du cadre (#rrggbb) ; noir par défaut",
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "panel": {
+      "type": "object",
+      "properties": {
+        "thickness": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Épaisseur du panneau hôte (= longueur du tube) (mm)"
+        }
+      },
+      "required": [
+        "thickness"
+      ],
+      "additionalProperties": false
+    },
+    "mount": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "head": {
+          "default": "countersunk",
+          "description": "Vis M3 et inserts à chaud ; countersunk : tête fraisée, socket : tête cylindrique (ISO 4762)",
+          "type": "string",
+          "enum": [
+            "countersunk",
+            "socket"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "light": {
+      "default": {},
+      "type": "object",
+      "properties": {
+        "wireExit": {
+          "default": "left",
+          "description": "Sortie des fils du ruban, vue de face",
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "version",
+    "legend",
+    "panel"
+  ],
+  "additionalProperties": false,
+  "description": "Preset d'un témoin lumineux (v1). Cotes en mm."
+}

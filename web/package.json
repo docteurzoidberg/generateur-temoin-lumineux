@@ -1,0 +1,27 @@
+{
+  "name": "@temoin/web",
+  "version": "0.1.0",
+  "private": true,
+  "license": "WTFPL",
+  "type": "module",
+  "description": "Web page of the indicator light generator: the core in a Web Worker, no server",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@fontsource/b612": "^5.3.0",
+    "@fontsource/b612-mono": "^5.3.0",
+    "@temoin/core": "0.1.0",
+    "fflate": "^0.8.3",
+    "replicad": "^1.2.0",
+    "replicad-opencascadejs": "^1.1.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "playwright-core": "^1.64.1",
+    "vite": "^8.3.5"
+  }
+}
