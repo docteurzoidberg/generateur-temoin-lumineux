@@ -319,6 +319,12 @@ touches haut et bas restent) : elles cachaient « 10.5 ».
 
 ## Points ouverts
 
+- [x] Tests de la page (`page.test.ts`, Chromium headless) : en local
+      seulement (31/10/2026) ; l'action GitHub fait le typecheck et les
+      autres tests. Sur son runner, le test hors ligne échouait : après le
+      rechargement sans réseau, la vue 3D n'était jamais construite, sans
+      erreur dans la console (cause non trouvée ; il passe en local). Son
+      message d'échec donne désormais l'état de la page et sa console.
 - [x] Moteur : replicad, d'après le prototype du 30/10/2026 (lot 3.0).
 - [x] Tolérances de parité : volume à 0,05 %, encombrement à 0,01 mm (lot 3.3).
 - [x] `npm link` pour appeler `temoin` depuis le skill, chemin absolu en

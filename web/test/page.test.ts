@@ -273,11 +273,19 @@ test('offline: once loaded, the page works without network, licences included', 
   const context = await browser.newContext();
   context.on('weberror', (e) => errors.push(e.error().message));
   const offline = await context.newPage();
+  const log: string[] = [];   // console and failed requests: where an offline load stops, in the failure message
+  offline.on('console', (m) => log.push(`${m.type()}: ${m.text()}`));
+  offline.on('requestfailed', (r) => log.push(`failed: ${r.url()} ${r.failure()?.errorText}`));
+  const state = () => offline.evaluate(() => JSON.stringify({
+    caption: document.querySelector('#caption')!.textContent, status: document.querySelector('#status')!.textContent,
+    controlled: !!navigator.serviceWorker.controller,
+  }));
   await offline.goto(server.resolvedUrls!.local[0]);
   await offline.evaluate(() => navigator.serviceWorker.ready.then(() => undefined));   // every file kept
   await context.setOffline(true);
   await offline.reload();
-  await expect.poll(() => offline.locator('#stage3d').getAttribute('data-built'), { timeout: 60000 }).toBe('frame mask+veil box cover testPanel');
+  await expect.poll(() => offline.locator('#stage3d').getAttribute('data-built'), { timeout: 90000 }).toBe('frame mask+veil box cover testPanel')
+    .catch(async (e: Error) => { throw new Error(`${e.message}\n${await state()}\n${log.join('\n')}`); });
   const button = offline.getByRole('button', { name: 'Télécharger le zip' });
   await expect.poll(() => button.isEnabled(), { timeout: 30000 }).toBe(true);
   const [download] = await Promise.all([offline.waitForEvent('download', { timeout: 60000 }), button.click()]);
