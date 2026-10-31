@@ -48,7 +48,18 @@ h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.2rem
 @media (max-width: 880px) { .presets { justify-items: start; } }
 .actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px 14px; }
 .tools { display: flex; flex-wrap: wrap; gap: 6px; }
-.theme[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+
+/* Theme switch, top right of the header: sun and moon on a track, the thumb covers the active one. */
+.top { position: relative; }
+.intro { padding-right: 72px; }
+.theme { position: absolute; top: 0; right: 0; width: 56px; height: 28px; padding: 0; display: flex; align-items: center; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; cursor: pointer; color: var(--muted); }
+.theme:hover { border-color: var(--olive); }
+.theme .icon { width: 16px; height: 16px; margin: 0 5px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.theme .moon { fill: currentColor; stroke-width: 1.5; }
+.theme .thumb { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); opacity: .22; transition: transform .18s ease; }
+.theme[aria-checked="true"] .thumb { transform: translateX(28px); }
+.theme[aria-checked="false"] .sun, .theme[aria-checked="true"] .moon { color: var(--accent); }
+@media (prefers-reduced-motion: reduce) { .theme .thumb { transition: none; } }
 .tool { font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px; padding: 6px 12px; cursor: pointer; list-style: none; }
 .tool::-webkit-details-marker { display: none; }
 .tool:hover:not(:disabled) { border-color: var(--olive); }

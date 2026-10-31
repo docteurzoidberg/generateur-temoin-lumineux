@@ -260,11 +260,11 @@ test('3D view: only the legend rebuilt for a new text', async () => {
 }, 90000);
 
 test('theme: the button switches between light and dark, kept in the browser', async () => {
-  const button = page.getByRole('button', { name: 'Sombre', exact: true });
-  const dark = await button.getAttribute('aria-pressed') === 'true';
+  const button = page.getByRole('switch', { name: 'Thème sombre' });
+  const dark = await button.getAttribute('aria-checked') === 'true';
   for (const theme of dark ? ['light', 'dark'] : ['dark', 'light']) {
     await button.click();
-    expect(await button.getAttribute('aria-pressed')).toBe(String(theme === 'dark'));
+    expect(await button.getAttribute('aria-checked')).toBe(String(theme === 'dark'));
     expect(await page.evaluate(() => [document.documentElement.dataset.theme, localStorage.getItem('theme')])).toEqual([theme, theme]);
   }
 });

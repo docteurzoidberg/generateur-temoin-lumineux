@@ -270,7 +270,7 @@ downloadButton.addEventListener('click', async () => {
 const themeButton = $<HTMLButtonElement>('#theme');
 const systemDark = matchMedia('(prefers-color-scheme: dark)');
 const isDark = () => (document.documentElement.dataset.theme ?? (systemDark.matches ? 'dark' : 'light')) === 'dark';
-const showTheme = () => themeButton.setAttribute('aria-pressed', String(isDark()));
+const showTheme = () => themeButton.setAttribute('aria-checked', String(isDark()));
 themeButton.addEventListener('click', () => {
   const theme = isDark() ? 'light' : 'dark';
   document.documentElement.dataset.theme = theme;

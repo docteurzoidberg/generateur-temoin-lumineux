@@ -18,6 +18,11 @@
       <h1>Témoin lumineux</h1>
       <p class="lead">Une légende éclairée par l’arrière, dans un cadre vissé sur la découpe d’un panneau. Les réglages se contrôlent à chaque saisie ; les fichiers d’impression sont calculés dans le navigateur.</p>
     </div>
+    <button type="button" class="theme" id="theme" role="switch" aria-checked="false" aria-label="Thème sombre" title="Thème sombre ou clair (par défaut, celui du système)">
+      <svg class="icon sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+      <svg class="icon moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg>
+      <span class="thumb" aria-hidden="true"></span>
+    </button>
     <div class="presets">
       <div class="actions">
       <div class="tools" role="toolbar" aria-label="Preset">
@@ -28,8 +33,6 @@
         </details>
         <button type="button" class="tool" id="save" title="Enregistrer le preset (le .json de temoin generate)" disabled>Enregistrer</button>
         <button type="button" class="tool" id="link" title="Copier le lien de la page, qui porte le preset">Lien</button>
-      </div>
-      <button type="button" class="tool theme" id="theme" aria-pressed="false" title="Thème sombre ou clair (par défaut, celui du système)">Sombre</button>
       </div>
       <p class="status" id="preset-status" role="status"></p>
       <input type="file" id="file" accept=".json,application/json" hidden>
