@@ -1,6 +1,6 @@
 # Plan — générateur de témoin lumineux
 
-Mise à jour : 30/10/2026. Plan du générateur (étapes 3 à 5 : ordre, pile,
+Mise à jour : 16/11/2026. Plan du générateur (étapes 3 à 5 : ordre, pile,
 lots) : [docs/plan-generateur.md](docs/plan-generateur.md) ; spécification
 (preset, contrôles, page, sorties, ligne de commande) :
 [docs/generateur.md](docs/generateur.md) ; skill : [docs/skill.md](docs/skill.md).
@@ -34,7 +34,7 @@ Les étapes se lancent une à une, à la demande de l'utilisateur.
    depuis `~/.claude/skills`, source dans `skill/`) : demander un témoin depuis un projet hôte, le générer depuis
    son preset, l'intégrer sur demande dans son design Fusion ; premier
    client, le Claudemètre.
-5. **Page web** : réglages ou preset ouvert (celui d'un projet hôte, par
+5. **Page web** *(fait le 31/10/2026, branche `etape-5-web`)* : réglages ou preset ouvert (celui d'un projet hôte, par
    exemple), aperçu en temps réel (éclaté ou assemblé, éteint
    ou allumé) et téléchargements, dans le navigateur, sans serveur.
 
@@ -53,7 +53,7 @@ cloisons et zones, clips, vis par l'arrière, légende sur film imprimé, façad
 - [x] Langue de l'interface (30/10/2026) : français pour la v1 ; plus tard,
       page multilingue avec des libellés i18n. Code en anglais (30/10/2026) :
       commentaires, identifiants, fichiers et tests de `core/`, `cli/`, `web/`.
-- [ ] Publication : dépôt public parti d'un seul commit (31/10/2026 ;
+- [x] Publication : dépôt public parti d'un seul commit (31/10/2026 ;
       l'historique de travail reste privé) ; page sur GitHub Pages,
       construite et publiée par `.github/workflows/page.yml` à chaque push
       sur `main` ; licence WTFPL v2 pour le code du dépôt (31/10/2026),
