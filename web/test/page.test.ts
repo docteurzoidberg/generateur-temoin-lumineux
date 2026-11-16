@@ -293,6 +293,6 @@ test('offline: once loaded, the page works without network, licences included', 
 
   expect(await offline.locator('footer a[href="licences.txt"]').count()).toBe(1);
   const licences = await offline.evaluate(() => fetch('licences.txt').then((r) => r.text()));
-  for (const line of ['replicad-opencascadejs 1.1.0 : LGPL-2.1-only', '@fontsource/b612 5.3.0 : OFL-1.1', 'Police Barlow Condensed (fonts/BarlowCondensed-SemiBold.ttf) : OFL-1.1']) expect(licences).toContain(line);
+  for (const line of ['replicad-opencascadejs 1.2.1 : LGPL-2.1-only', '@fontsource/b612 5.3.0 : OFL-1.1', 'Police Barlow Condensed (fonts/BarlowCondensed-SemiBold.ttf) : OFL-1.1']) expect(licences).toContain(line);
   await context.close();
 }, 180000);

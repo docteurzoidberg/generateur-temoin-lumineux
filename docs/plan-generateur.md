@@ -248,13 +248,15 @@ gardent `legend()`. Un seul worker OpenCascade pour l'aperçu et le zip
 éclaté ou assemblé, quatre points de vue, éteint ou allumé (commun avec la
 vue de face), pièces masquables. Mesures sur la page construite (Chromium
 headless) : première vue 3D en 2,0 s, légende recalculée en 0,26 à 0,43 s.
-Mémoire : OpenCascade fuit dans chaque opération booléenne (issue replicad
-[#282](https://github.com/sgenoud/replicad/issues/282), ouverte le
-23/09/2026, environ 0,2 Mo par opération, toujours là en 1.2.0) ; le
-worker est remplacé quand son tas dépasse 512 Mo. Sur 50 recalculs lourds
-(texte et largeur du cadre), le tas va en dents de scie de 127 à 595 Mo,
-2 relances, aucune erreur (mesure faite à la main, trop longue pour
-`npm test`). Comparé à `eclate.html` (ALARME) : mêmes pièces, positions et
+Mémoire : jusqu'à replicad 1.2.0, OpenCascade fuyait dans chaque
+opération booléenne (issue replicad
+[#282](https://github.com/sgenoud/replicad/issues/282), environ 0,2 Mo
+par opération), corrigé en 1.2.1 (6/11/2026). Le worker est remplacé
+quand son tas dépasse 512 Mo, garde-fou conservé car le tas wasm ne
+rétrécit jamais. Sur 50 tours de recalcul (hauteur du cadre puis texte,
+mesure faite à la main, trop longue pour `npm test`) : en 1.2.0, dents de
+scie de 100 à 595 Mo et 2 relances ; en 1.2.1, de 100 à 173 Mo, aucune
+relance, aucune erreur. Comparé à `eclate.html` (ALARME) : mêmes pièces, positions et
 point de vue ; la quincaillerie de la maquette (vis, inserts, ruban) n'est
 pas dans le noyau, donc pas dans l'aperçu. CLAUDE : même montage, avec son
 texte et sa couleur de cadre. Test de la page : vue 3D des 6 pièces,
@@ -296,9 +298,9 @@ touches haut et bas restent) : elles cachaient « 10.5 ».
 - STEP et 3MF calculés au téléchargement seulement ; vue de face et
   contrôles aussitôt, 3D ensuite (premier résultat vers 5,5 s d'après le
   prototype).
-- Mémoire : OpenCascade fuit dans les opérations booléennes (replicad #282),
-  sans gravité pour `temoin` qui génère une fois ; la page relance son
-  worker au-delà de 512 Mo (lot 5.4).
+- Mémoire : la fuite d'OpenCascade dans les opérations booléennes
+  (replicad #282) est corrigée en 1.2.1 ; la page relance quand même son
+  worker au-delà de 512 Mo (lot 5.4), le tas wasm ne rétrécissant jamais.
 - Parité : on compare les fichiers du zip (le zip, lui, porte des dates).
 - Plus tard : coupe 3D, zones fines surlignées sur la vue de face (les
   contrôles ne donnent leur position que dans le message).

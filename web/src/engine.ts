@@ -1,7 +1,7 @@
 // OpenCascade worker: starts OpenCascade and the font as soon as the page loads, then
 // computes on request the 3D preview of a preset (meshes cached per piece) or its files,
-// delivered as a zip. Every reply carries the heap size: OpenCascade leaks in boolean
-// operations (replicad issue #282), so engine-client.ts replaces a worker grown too big.
+// delivered as a zip. Every reply carries the heap size, which never shrinks: engine-client.ts
+// replaces a worker grown too big.
 // OpenCascade's .wasm stays a separately served file (LGPL licence).
 import opencascade from 'replicad-opencascadejs';
 import wasmUrl from 'replicad-opencascadejs/wasm?url';

@@ -1,7 +1,8 @@
 // Page side of the OpenCascade worker (engine.ts): requests run one at a time, in order.
-// OpenCascade leaks in boolean operations (replicad issue #282: about 0.2 MB each, a few
-// tens of MB per full rebuild), so once a reply reports a heap past RESTART_HEAP, the worker
-// is replaced by a fresh one before the next request; its preview cache goes with it.
+// The wasm heap never shrinks. The boolean-operation leak (replicad issue #282, a few tens
+// of MB per full rebuild) is fixed since replicad 1.2.1, but the heap still creeps up slowly
+// (under 1 MB per rebuild), so once a reply reports a heap past RESTART_HEAP, the worker is
+// replaced by a fresh one before the next request; its preview cache goes with it.
 import type { EngineReply, EngineRequest, FromEngine } from './protocol.ts';
 
 export const RESTART_HEAP = 512 * 2 ** 20;
