@@ -12,7 +12,7 @@ Les étapes se lancent une à une, à la demande de l'utilisateur.
 1. **Maquette dans Fusion** : faite et validée le 29/10/2026 ; dépôt à
    part depuis le 31/10/2026, avec ses points à revoir ; ses sorties de
    référence pour les tests sont dans `core/test/ref/`.
-2. **Impressions d'essai** *(en cours)* : l'utilisateur imprime et fait ses
+2. **Impressions d'essai** *(faites et validées, noté le 16/11/2026)* : l'utilisateur imprime et fait ses
    retours ; retour à l'étape 1 si besoin. La maquette doit rester simple à
    régénérer depuis le design Fusion (STL, images, vue éclatée) : ces
    opérations sont aujourd'hui plusieurs scripts, à réduire à une seule
