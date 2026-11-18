@@ -1,6 +1,6 @@
 # Plan — générateur de témoin lumineux
 
-Mise à jour : 16/11/2026. Plan du générateur (étapes 3 à 5 : ordre, pile,
+Mise à jour : 18/11/2026. Plan du générateur (étapes 3 à 5 : ordre, pile,
 lots) : [docs/plan-generateur.md](docs/plan-generateur.md) ; spécification
 (preset, contrôles, page, sorties, ligne de commande) :
 [docs/generateur.md](docs/generateur.md) ; skill : [docs/skill.md](docs/skill.md).
@@ -37,6 +37,39 @@ Les étapes se lancent une à une, à la demande de l'utilisateur.
 5. **Page web** *(fait le 31/10/2026, branche `etape-5-web`)* : réglages ou preset ouvert (celui d'un projet hôte, par
    exemple), aperçu en temps réel (éclaté ou assemblé, éteint
    ou allumé) et téléchargements, dans le navigateur, sans serveur.
+6. **Anglais par défaut, nouveau dépôt** *(décidée le 18/11/2026, pas
+   lancée)* : le projet passe dans un nouveau dépôt
+   `panel-indicator-generator`, en anglais américain, qui devient la
+   référence ; ce dépôt-ci, en français, est gardé un temps puis gelé. En
+   français restent une version des docs et la page, multilingue. Lots :
+   1. *Nouveau dépôt* : historique public repris, messages des 6 commits
+      qui ne sont pas en anglais américain réécrits (arbres, auteurs et
+      dates inchangés, vérifiés avant le push) ; page publiée sur GitHub
+      Pages à sa propre adresse.
+   2. *Noms* : terme anglais « indicator » ; paquets `@indicator/*`,
+      commande `indicator`, skill `panel-indicator`, préfixe du cache hors
+      ligne ; orthographe américaine partout (`color`, `license`,
+      `center`, `licenses.txt`), sauf les identifiants d'API externes
+      (`organiseBlueprints` de replicad).
+   3. *Noyau et commande* : messages renvoyés en code + paramètres, avec un
+      catalogue en/fr dans `core` (contrôles, résumé, erreurs du preset) ;
+      nombres formatés selon la langue ; JSON Schema en anglais ; noms des
+      fichiers produits en anglais, fixes quelle que soit la langue ;
+      sortie de la commande en anglais ; la référence de test (preset
+      ALARME de la maquette) séparée du preset d'exemple, qui passe en
+      anglais. Clés du preset inchangées : il reste en v1.
+   4. *Page multilingue* : anglais par défaut, français au choix ; langue
+      du navigateur, choix dans l'en-tête retenu par la page ; format des
+      liens de partage inchangé ; tests de la page en anglais et en
+      français.
+   5. *Docs* : anglais à leur place ; version française du README, de
+      `generateur.md` et de `skill.md` (`README.fr.md`, `docs/fr/`) ; les
+      journaux (`PLAN.md`, `plan-generateur.md`) en anglais seulement ;
+      un hook signale les docs françaises en retard sur leur version
+      anglaise.
+   6. *Bascule* : ce dépôt-ci gelé, avec un bandeau sur sa page qui ouvre
+      le même preset dans la nouvelle ; les projets hôtes passent au
+      nouveau dépôt à leur rythme ; ce dépôt-ci archivé ensuite.
 
 Détail des étapes 3 à 5 : [docs/plan-generateur.md](docs/plan-generateur.md).
 
@@ -53,6 +86,10 @@ cloisons et zones, clips, vis par l'arrière, légende sur film imprimé, façad
 - [x] Langue de l'interface (30/10/2026) : français pour la v1 ; plus tard,
       page multilingue avec des libellés i18n. Code en anglais (30/10/2026) :
       commentaires, identifiants, fichiers et tests de `core/`, `cli/`, `web/`.
+      Anglais par défaut (18/11/2026) : nouveau dépôt
+      `panel-indicator-generator` en anglais américain (code, commandes,
+      docs, historique), page en anglais et en français, version française
+      des docs ; ce dépôt-ci gardé un temps (étape 6).
 - [x] Publication : dépôt public parti d'un seul commit (31/10/2026 ;
       l'historique de travail reste privé) ; page sur GitHub Pages,
       construite et publiée par `.github/workflows/page.yml` à chaque push
