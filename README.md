@@ -1,5 +1,12 @@
 # Générateur de témoin lumineux
 
+> **Ce dépôt n'évolue plus (18/11/2026).** Le générateur continue dans
+> [panel-indicator-generator](https://github.com/docteurzoidberg/panel-indicator-generator),
+> en anglais par défaut, avec une version française des docs et une page en
+> anglais et en français :
+> <https://docteurzoidberg.github.io/panel-indicator-generator/>. Les liens
+> de cette page-ci rouvrent leur preset dans la nouvelle (bandeau en haut).
+
 Génère des **témoins lumineux encastrables**, imprimables en 3D, pour
 n'importe quel projet : une légende qui s'allume derrière une fenêtre, dans
 un cadre qui se monte dans la découpe d'un panneau, comme un voyant ou un

@@ -27,6 +27,9 @@
 }
 
 * { box-sizing: border-box; }
+/* Banner: the generator moved to a new repository and page. */
+.moved { margin: 0; padding: 8px 16px; text-align: center; background: var(--accent); color: var(--bg); font-size: 13px; }
+.moved a { color: inherit; font-weight: 700; }
 body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 14px; line-height: 1.5; }
 code { font-family: var(--font-mono); font-size: .92em; }
 .muted { color: var(--muted); margin: 0; }

@@ -37,8 +37,8 @@ Les étapes se lancent une à une, à la demande de l'utilisateur.
 5. **Page web** *(fait le 31/10/2026, branche `etape-5-web`)* : réglages ou preset ouvert (celui d'un projet hôte, par
    exemple), aperçu en temps réel (éclaté ou assemblé, éteint
    ou allumé) et téléchargements, dans le navigateur, sans serveur.
-6. **Anglais par défaut, nouveau dépôt** *(décidée le 18/11/2026, pas
-   lancée)* : le projet passe dans un nouveau dépôt
+6. **Anglais par défaut, nouveau dépôt** *(faite le 18/11/2026 : la suite
+   est dans `panel-indicator-generator` ; ce dépôt-ci est gelé)* : le projet passe dans un nouveau dépôt
    `panel-indicator-generator`, en anglais américain, qui devient la
    référence ; ce dépôt-ci, en français, est gardé un temps puis gelé. En
    français restent une version des docs et la page, multilingue. Lots :

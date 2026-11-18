@@ -382,3 +382,10 @@ if (!openLink()) load(JSON.parse(EXAMPLES.alarme), '', 'Exemple : alarme');
 // under NODE_ENV=test); if the service worker cannot be installed, the page simply needs
 // the network.
 if (import.meta.env.MODE === 'production' && 'serviceWorker' in navigator) navigator.serviceWorker.register(`${import.meta.env.BASE_URL}sw.js`).catch(() => {});
+
+// The generator moved: the banner opens the same preset (same link format) in the new page.
+const NEW_PAGE = 'https://docteurzoidberg.github.io/panel-indicator-generator/';
+const movedLink = $<HTMLAnchorElement>('#moved-link');
+const pointMoved = () => { movedLink.href = NEW_PAGE + location.hash; };
+for (const event of ['click', 'focus', 'mouseenter', 'contextmenu']) movedLink.addEventListener(event, pointMoved);
+pointMoved();
